@@ -1,17 +1,30 @@
 var message = '';
 var student;
+var userInput; // user is prompted to enter student name
 
 function print(message) {
   var outputDiv = document.getElementById('output');
   outputDiv.innerHTML = message;
 }
 
-for(var i = 0; i < students.length; i += 1) {
-  student = students[i];
-  message += '<div class="color"><h2>Name: ' + student.name + '</h2>';
-  message += '<p>Track: ' + student.track + '</p>';
-  message += '<p>Achievements: ' + student.achievements + '</p>';
-  message += '<p>Points: ' + student.points + '</p></div>';
+function getStudentReport(student) {
+  var report = '<div class="color"><h2>Name: ' + student.name + '</h2>';
+  report += '<p>Track: ' + student.track + '</p>';
+  report += '<p>Achievements: ' + student.achievements + '</p>';
+  report += '<p>Points: ' + student.points + '</p></div>';
+  return report;
 }
 
-print(message);
+while (true) {
+  userInput = prompt("enter name or type 'quit' to stop searches.");
+  if (userInput === null || userInput.toLowerCase() === 'quit') {
+    break;
+  }
+  for(var i = 0; i < students.length; i += 1) {
+    student = students[i];
+    if (userInput.toLowerCase() === student.name) {
+      message = getStudentReport(student);
+      print(message);
+    }
+  }
+}

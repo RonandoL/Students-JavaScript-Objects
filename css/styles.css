@@ -1,0 +1,12 @@
+.boxy {
+  margin: 10px
+}
+
+.color {
+  padding: 10px;
+}
+
+.color:hover {
+  background-color: #ffe6ff;
+  border-radius: 5px;
+}
